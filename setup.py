@@ -19,10 +19,6 @@ def get_requirements(file_path:str)->list[str]:
     return requirements
 
 
-
-
-
-
 setup(
     name='MLProject',
     version='0.0.1',
