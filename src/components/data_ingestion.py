@@ -16,9 +16,9 @@ ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
 ##we create another class to save the train_data, test_data and some other raw data that class called as data_ingestion class
 @dataclass #with the help of this decorator i can directly define the variables in the class DataIngestionConfig , we don't need init to define variables
 class DataIngestionConfig:
-    train_data_path:str=os.path.join(ROOT_DIR,"Artifact","Train.csv") #save the train data at the given path
-    test_data_path:str=os.path.join(ROOT_DIR,"Artifact","Test.csv") #save test data at the given path
-    raw_data_path:str=os.path.join(ROOT_DIR,"Artifact","Data.csv") #save the raw data at the given path
+    train_data_path:str=os.path.join(ROOT_DIR,"artifacts","Train.csv") #save the train data at the given path
+    test_data_path:str=os.path.join(ROOT_DIR,"artifacts","Test.csv") #save test data at the given path
+    raw_data_path:str=os.path.join(ROOT_DIR,"artifacts","Data.csv") #save the raw data at the given path
 
 
 
