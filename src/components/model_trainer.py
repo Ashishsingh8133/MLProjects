@@ -53,7 +53,36 @@ class ModelTrainer:
                 'Neighbors':KNeighborsRegressor(),
             }
 
-            model_report:dict=evaluate_model(x_train=x_train,y_train=y_train,x_test=x_test,y_test=y_test,models=models)
+            param={
+                'GradientBoost':{
+                    'learning_rate':[0.1,0.01,0.5],
+                    'n_estimators':[8,16,32,64,128]
+                },
+                'linear_Regression':{
+
+                },
+                'Adaboost':{
+                    'n_estimators':[8,16,32,64,128],
+                    'learning_rate':[0.5,0.01,0.1]
+                },
+                'RandomForest':{
+                    'n_estimators':[8,16,32,64,128]
+                },
+                'Support_vector_regressor':{
+                    'kernel':['linear', 'poly', 'rbf', 'sigmoid'],
+                    'degree':[3,5,4,6],
+                    'gamma':['scale', 'auto']
+                },
+                'DecisionTreeRegressor':{       
+                    'max_depth':[2,3,4,5,7],
+                    'max_features':['sqrt', 'log2']
+                },
+                'Neighbors':{
+                    'n_neighbors':[5,6,7,8]
+                }
+            }
+
+            model_report:dict=evaluate_model(x_train=x_train,y_train=y_train,x_test=x_test,y_test=y_test,models=models,params=param)
             logging.info("Training the model over training data")
             logging.info("Testing the model over testing data")
 
