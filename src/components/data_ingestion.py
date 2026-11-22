@@ -8,6 +8,9 @@ from src.logger import logging
 import pandas as pd
 
 from sklearn.model_selection import train_test_split
+
+from src.components.data_transformation import DataTransformation
+from src.components.data_transformation import DataTransformationConfig
 from dataclasses import dataclass
 
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
@@ -37,6 +40,7 @@ class DataIngestion:
 
             logging.info("Train Test Split Initiated")
             train_set,test_set=train_test_split(df,test_size=0.20,random_state=42)
+            
             train_set.to_csv(self.IngestionConfig.train_data_path,index=False,header=True)
             test_set.to_csv(self.IngestionConfig.test_data_path,index=False,header=True)
 
@@ -50,7 +54,11 @@ class DataIngestion:
 
 if __name__=="__main__":
     obj=DataIngestion()
-    obj.initiate_data_ingestion()
+    train_data,test_data=obj.initiate_data_ingestion()
+    
+    data_transformation=DataTransformation()
+    data_transformation.initiate_data_transformation(train_data,test_data)
+
         
             
     
